@@ -12,20 +12,38 @@ import SwiftyJSON
 
 class TableViewController: UITableViewController {
 
+    let defaults = UserDefaults.standard
+
     let currencies = [
-        ["BTC": "Bitcoin"],
-        ["BCH": "Bitcoin Cash"],
-        ["ETH": "Ethereum"],
-        ["LTC": "Litecoin"]
+        ["shortName": "BTC", "name": "Bitcoin"],
+        ["shortName": "BCH", "name": "Bitcoin Cash"],
+        ["shortName": "ETH", "name": "Ethereum"],
+        ["shortName": "LTC", "name": "Litecoin"]
     ]
-    let nativeCurrency = ["CAD": "$"]
+
+    var nativeCurrency : [String: Any] = [:]
     let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
     
     var finalURL = ""
     
+    lazy var refreshValuesControl: UIRefreshControl = {
+        let refreshValuesControl = UIRefreshControl()
+        refreshValuesControl.addTarget(self, action: #selector(TableViewController.handleRefresh(_:)),for: UIControlEvents.valueChanged)
+        return refreshValuesControl
+    }()
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CustomCurrencyCell", bundle: nil), forCellReuseIdentifier: "customCurrencyCell")
+        tableView.rowHeight = 80.0
+        tableView.addSubview(self.refreshValuesControl)
+        
+        nativeCurrency = defaults.dictionary(forKey: "nativeCurrency")!
     }
 
     // MARK: - Table view data source
@@ -36,10 +54,13 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        nativeCurrency = defaults.dictionary(forKey: "nativeCurrency")!
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCurrencyCell", for: indexPath) as! CustomCurrencyCell
         
-        finalURL = baseURL + currencies[indexPath.row].keys.first! + nativeCurrency.keys.first!
-
+        let defaultCurrency = nativeCurrency["shortName"] as! String
+        finalURL = baseURL + currencies[indexPath.row]["shortName"]! + defaultCurrency
+        
         Alamofire.request(finalURL, method: .get)
             .responseJSON { (response) in
                 if response.result.isSuccess {
@@ -48,23 +69,31 @@ class TableViewController: UITableViewController {
 
                         let currency = self.currencies[indexPath.row]
                         let currencyValue = String(format: "%.2f", valueResult)
-                        let currencySymbol = self.nativeCurrency.values.first!
+                        let currencySymbol = self.nativeCurrency["symbol"]!
                         let currencyChangePrice = String(format: "%.2f", currencyData["changes"]["price"]["day"].double!)
                         let currencyChangePercent = String(format: "%.2f", currencyData["changes"]["percent"]["day"].double!)
 
                         cell.currencyValue.text = "\(currencyValue) \(currencySymbol)"
-                        cell.currencyName.text = currency.values.first!
-                        cell.currencyShortName.text = currency.keys.first!
+                        cell.currencyName.text = currency["name"]!
+                        cell.currencyShortName.text = currency["shortName"]!
                         cell.currencyChange.text = "\(currencyChangePrice) \(currencySymbol) (\(currencyChangePercent)%)"
-
-                        cell.currencyValue.sizeToFit()
-                        cell.currencyName.sizeToFit()
-                        cell.currencyShortName.sizeToFit()
-                        cell.currencyChange.sizeToFit()
                     }
                 }
         }
 
         return cell
+    }
+    
+    //MARK: Tableview Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToCurrencyDashboard", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! CurrencyDashboardViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCurrency = currencies[indexPath.row]
+        }
     }
 }

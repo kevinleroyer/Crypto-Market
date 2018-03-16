@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0058B2A1205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058B2A0205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift */; };
 		00782CCE204992D5005E6A93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CCD204992D5005E6A93 /* AppDelegate.swift */; };
 		00782CD3204992D5005E6A93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00782CD1204992D5005E6A93 /* Main.storyboard */; };
 		00782CD5204992D5005E6A93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00782CD4204992D5005E6A93 /* Assets.xcassets */; };
@@ -14,10 +15,12 @@
 		00782CE32049965A005E6A93 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CE22049965A005E6A93 /* TableViewController.swift */; };
 		00782CED2049AB68005E6A93 /* CustomCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CEB2049AB68005E6A93 /* CustomCurrencyCell.swift */; };
 		00782CEE2049AB68005E6A93 /* CustomCurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00782CEC2049AB68005E6A93 /* CustomCurrencyCell.xib */; };
+		00782CF02049BBAF005E6A93 /* CurrencyDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CEF2049BBAF005E6A93 /* CurrencyDashboardViewController.swift */; };
 		34A76EAF4F9CF87737D47286 /* Pods_Crypto_Market.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE7D31A64BC733B0C87FFCF /* Pods_Crypto_Market.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0058B2A0205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCurrencySettingsTableViewController.swift; sourceTree = "<group>"; };
 		00782CCA204992D5005E6A93 /* Crypto Market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00782CCD204992D5005E6A93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00782CD2204992D5005E6A93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,6 +30,7 @@
 		00782CE22049965A005E6A93 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		00782CEB2049AB68005E6A93 /* CustomCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurrencyCell.swift; sourceTree = "<group>"; };
 		00782CEC2049AB68005E6A93 /* CustomCurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCurrencyCell.xib; sourceTree = "<group>"; };
+		00782CEF2049BBAF005E6A93 /* CurrencyDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDashboardViewController.swift; sourceTree = "<group>"; };
 		7CE7D31A64BC733B0C87FFCF /* Pods_Crypto_Market.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crypto_Market.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B589B3AA6457D0E50625D37C /* Pods-Crypto Market.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Market.release.xcconfig"; path = "Pods/Target Support Files/Pods-Crypto Market/Pods-Crypto Market.release.xcconfig"; sourceTree = "<group>"; };
 		EA69724FCCA8FF74B4F0E334 /* Pods-Crypto Market.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Market.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Crypto Market/Pods-Crypto Market.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				00782CE22049965A005E6A93 /* TableViewController.swift */,
+				00782CEF2049BBAF005E6A93 /* CurrencyDashboardViewController.swift */,
+				0058B2A0205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -239,11 +245,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Crypto Market/Pods-Crypto Market-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00782CCE204992D5005E6A93 /* AppDelegate.swift in Sources */,
+				0058B2A1205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift in Sources */,
 				00782CE32049965A005E6A93 /* TableViewController.swift in Sources */,
+				00782CF02049BBAF005E6A93 /* CurrencyDashboardViewController.swift in Sources */,
 				00782CED2049AB68005E6A93 /* CustomCurrencyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class CustomCurrencyCell: UITableViewCell {
     @IBOutlet weak var currencyShortName: UILabel!
     @IBOutlet weak var currencyValue: UILabel!
     @IBOutlet weak var currencyChange: UILabel!
-    
+            
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
