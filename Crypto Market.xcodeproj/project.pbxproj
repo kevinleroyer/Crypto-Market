@@ -16,6 +16,7 @@
 		00782CED2049AB68005E6A93 /* CustomCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CEB2049AB68005E6A93 /* CustomCurrencyCell.swift */; };
 		00782CEE2049AB68005E6A93 /* CustomCurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00782CEC2049AB68005E6A93 /* CustomCurrencyCell.xib */; };
 		00782CF02049BBAF005E6A93 /* CurrencyDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00782CEF2049BBAF005E6A93 /* CurrencyDashboardViewController.swift */; };
+		00C7BD6A205E5A5400157FFA /* CurrencyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C7BD69205E5A5400157FFA /* CurrencyDataModel.swift */; };
 		34A76EAF4F9CF87737D47286 /* Pods_Crypto_Market.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE7D31A64BC733B0C87FFCF /* Pods_Crypto_Market.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		00782CEB2049AB68005E6A93 /* CustomCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurrencyCell.swift; sourceTree = "<group>"; };
 		00782CEC2049AB68005E6A93 /* CustomCurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCurrencyCell.xib; sourceTree = "<group>"; };
 		00782CEF2049BBAF005E6A93 /* CurrencyDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDashboardViewController.swift; sourceTree = "<group>"; };
+		00C7BD69205E5A5400157FFA /* CurrencyDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataModel.swift; sourceTree = "<group>"; };
 		7CE7D31A64BC733B0C87FFCF /* Pods_Crypto_Market.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crypto_Market.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B589B3AA6457D0E50625D37C /* Pods-Crypto Market.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Market.release.xcconfig"; path = "Pods/Target Support Files/Pods-Crypto Market/Pods-Crypto Market.release.xcconfig"; sourceTree = "<group>"; };
 		EA69724FCCA8FF74B4F0E334 /* Pods-Crypto Market.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Market.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Crypto Market/Pods-Crypto Market.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				00782CCD204992D5005E6A93 /* AppDelegate.swift */,
+				00C7BD68205E5A3B00157FFA /* Model */,
 				00782CDF204992E0005E6A93 /* Controllers */,
 				00782CE0204992F3005E6A93 /* Views */,
 				00782CE12049930C005E6A93 /* Supporting Files */,
@@ -113,6 +116,14 @@
 				00782CEC2049AB68005E6A93 /* CustomCurrencyCell.xib */,
 			);
 			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		00C7BD68205E5A3B00157FFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				00C7BD69205E5A5400157FFA /* CurrencyDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5F45F0F1863E5B2944AE26D7 /* Pods */ = {
@@ -272,6 +283,7 @@
 				0058B2A1205A7EC400641B36 /* NativeCurrencySettingsTableViewController.swift in Sources */,
 				00782CE32049965A005E6A93 /* TableViewController.swift in Sources */,
 				00782CF02049BBAF005E6A93 /* CurrencyDashboardViewController.swift in Sources */,
+				00C7BD6A205E5A5400157FFA /* CurrencyDataModel.swift in Sources */,
 				00782CED2049AB68005E6A93 /* CustomCurrencyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

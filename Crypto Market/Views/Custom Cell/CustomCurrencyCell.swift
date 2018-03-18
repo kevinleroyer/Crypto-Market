@@ -26,4 +26,10 @@ class CustomCurrencyCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setLabels(with dataModel: CurrencyDataModel) {
+        self.currencyValue.text = "\(dataModel.symbol)\(dataModel.value)"
+        self.currencyName.text = dataModel.name
+        self.currencyShortName.text = dataModel.shortName
+        self.currencyChange.text = "\(dataModel.changePrice) \(dataModel.symbol) (\(dataModel.changePercent)%)"
+    }
 }

@@ -149,6 +149,8 @@
                     </view>
                     <connections>
                         <outlet property="chart" destination="osv-zU-ig8" id="Ezn-gT-4Xg"/>
+                        <outlet property="currencyChangeLabel" destination="yhC-US-41g" id="eoq-Wf-X5Z"/>
+                        <outlet property="currencyPriceLabel" destination="gxq-C7-PsU" id="SPx-b1-bHg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTy-ui-0BQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

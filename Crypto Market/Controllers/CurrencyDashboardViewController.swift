@@ -14,19 +14,18 @@ import SwiftChart
 class CurrencyDashboardViewController: UIViewController {
 
     @IBOutlet weak var chart: Chart!
+    @IBOutlet weak var currencyPriceLabel: UILabel!
+    @IBOutlet weak var currencyChangeLabel: UILabel!
     
     let defaults = UserDefaults.standard
     var nativeCurrency : [String: Any] = [:]
+    var currencyDataModel : CurrencyDataModel?
 
     var selectedCurrency : [String : String]? {
         didSet{
             nativeCurrency = defaults.dictionary(forKey: "nativeCurrency")!
             loadCurrencyChartData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        title = (selectedCurrency?["name"])! + " Price"
     }
     
     let historyEndpoint = "https://apiv2.bitcoinaverage.com/indices/global/history/"
@@ -37,6 +36,13 @@ class CurrencyDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         chart.showXLabelsAndGrid = false
+        if currencyDataModel != nil {
+            setCurrencyData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        title = (selectedCurrency?["name"])! + " Price"
     }
     
     //MARK: - Chart Data
@@ -70,7 +76,14 @@ class CurrencyDashboardViewController: UIViewController {
         chart.add(series)
     }
     
-    //MARK: Period Button Pressed
+    // MARK: - Currency Data
+    
+    func setCurrencyData() {
+        currencyChangeLabel.text = currencyDataModel!.changePrice + currencyDataModel!.symbol + " (" + currencyDataModel!.changePercent + ")"
+        currencyPriceLabel.text = currencyDataModel!.symbol + currencyDataModel!.value
+    }
+    
+    // MARK: - Period Button Pressed
     
     @IBAction func periodButtonPressed(_ sender: UIButton) {
         if sender.tag == 1 {
