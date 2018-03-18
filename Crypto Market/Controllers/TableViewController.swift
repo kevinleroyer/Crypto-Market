@@ -20,16 +20,16 @@ class TableViewController: UITableViewController {
         ["shortName": "ETH", "name": "Ethereum"],
         ["shortName": "LTC", "name": "Litecoin"]
     ]
-
-    var nativeCurrency : [String: Any] = [:]
-    let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
-
-    var currencyDataModels = [CurrencyDataModel]()
     
+    var currencyDataModels = [CurrencyDataModel]()
+    var nativeCurrency : [String: Any] = [:]
+    
+    let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
     var finalURL = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.register(UINib(nibName: "CustomCurrencyCell", bundle: nil), forCellReuseIdentifier: "customCurrencyCell")
         tableView.rowHeight = 80.0
         tableView.addSubview(self.refreshValuesControl)
