@@ -48,6 +48,7 @@ class TableViewController: UITableViewController {
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         currencyDataModels = [CurrencyDataModel]()
         tableView.reloadData()
+        refreshControl.tintColor = UIColor.lightGray
         refreshControl.endRefreshing()
     }
     

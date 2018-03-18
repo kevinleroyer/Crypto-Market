@@ -100,6 +100,7 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68b-ZU-Aqb">
                                                 <rect key="frame" x="0.0" y="0.0" width="107.5" height="30"/>
                                                 <state key="normal" title="1D"/>
+                                                <state key="highlighted" title="1D"/>
                                                 <connections>
                                                     <action selector="periodButtonPressed:" destination="jIt-J0-wEM" eventType="touchUpInside" id="Dvm-aZ-Bwd"/>
                                                 </connections>
@@ -148,9 +149,12 @@
                         <viewLayoutGuide key="safeArea" id="ZXz-cc-0Fo"/>
                     </view>
                     <connections>
+                        <outlet property="allTimeButton" destination="Gxl-c6-ol0" id="aHc-uu-VKa"/>
                         <outlet property="chart" destination="osv-zU-ig8" id="Ezn-gT-4Xg"/>
                         <outlet property="currencyChangeLabel" destination="yhC-US-41g" id="eoq-Wf-X5Z"/>
                         <outlet property="currencyPriceLabel" destination="gxq-C7-PsU" id="SPx-b1-bHg"/>
+                        <outlet property="oneDayButton" destination="68b-ZU-Aqb" id="b3j-m6-DOh"/>
+                        <outlet property="oneMonthButton" destination="qP3-ab-GWt" id="wj2-cM-VYR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTy-ui-0BQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,12 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SwiftChart
+import SVProgressHUD
 
 class CurrencyDashboardViewController: UIViewController {
 
     @IBOutlet weak var chart: Chart!
     @IBOutlet weak var currencyPriceLabel: UILabel!
     @IBOutlet weak var currencyChangeLabel: UILabel!
+    @IBOutlet weak var oneDayButton: UIButton!
+    @IBOutlet weak var oneMonthButton: UIButton!
+    @IBOutlet weak var allTimeButton: UIButton!
     
     let defaults = UserDefaults.standard
     var nativeCurrency : [String: Any] = [:]
@@ -35,6 +39,8 @@ class CurrencyDashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
+        oneDayButton.isSelected = true
         chart.showXLabelsAndGrid = false
         if currencyDataModel != nil {
             setCurrencyData()
@@ -74,6 +80,7 @@ class CurrencyDashboardViewController: UIViewController {
         let series = ChartSeries(chartData)
         series.area = true
         chart.add(series)
+        SVProgressHUD.dismiss()
     }
     
     // MARK: - Currency Data
@@ -86,6 +93,9 @@ class CurrencyDashboardViewController: UIViewController {
     // MARK: - Period Button Pressed
     
     @IBAction func periodButtonPressed(_ sender: UIButton) {
+        unselectButtons()
+        sender.isSelected = true
+        SVProgressHUD.show()
         if sender.tag == 1 {
             loadCurrencyChartData()
         } else if sender.tag == 2 {
@@ -93,5 +103,11 @@ class CurrencyDashboardViewController: UIViewController {
         } else if sender.tag == 3 {
             loadCurrencyChartData(period: "alltime")
         }
+    }
+    
+    func unselectButtons() {
+        oneDayButton.isSelected = false
+        oneMonthButton.isSelected = false
+        allTimeButton.isSelected = false
     }
 }
