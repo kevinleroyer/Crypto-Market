@@ -53,21 +53,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZe-fE-dAk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="110"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxq-C7-PsU">
-                                        <rect key="frame" x="62" y="10" width="251" height="48"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxq-C7-PsU">
+                                        <rect key="frame" x="8" y="10" width="359" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Mt6-lQ-cBH"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="251" id="RSi-SN-o1D"/>
+                                            <constraint firstAttribute="height" constant="48" id="njj-Rb-zr8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-US-41g">
-                                        <rect key="frame" x="120.5" y="64" width="134" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Change" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhC-US-41g">
+                                        <rect key="frame" x="8" y="64" width="359" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="R3p-Cx-08D"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="134" id="VzJ-XD-0Vx"/>
+                                            <constraint firstAttribute="height" constant="21" id="BLC-vt-DT5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -76,12 +74,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gxq-C7-PsU" firstAttribute="top" secondItem="HZe-fE-dAk" secondAttribute="top" constant="10" id="6QQ-3V-WY3"/>
-                                    <constraint firstItem="yhC-US-41g" firstAttribute="centerX" secondItem="HZe-fE-dAk" secondAttribute="centerX" id="Ewm-tV-2LD"/>
                                     <constraint firstAttribute="height" constant="110" id="Pke-vk-QYp"/>
-                                    <constraint firstItem="gxq-C7-PsU" firstAttribute="centerX" secondItem="HZe-fE-dAk" secondAttribute="centerX" id="R8Y-0L-h65"/>
-                                    <constraint firstItem="yhC-US-41g" firstAttribute="top" secondItem="gxq-C7-PsU" secondAttribute="bottom" constant="6" id="SgI-1u-nKg"/>
+                                    <constraint firstItem="gxq-C7-PsU" firstAttribute="leading" secondItem="HZe-fE-dAk" secondAttribute="leading" constant="8" id="Sa6-fZ-JCh"/>
+                                    <constraint firstItem="gxq-C7-PsU" firstAttribute="top" secondItem="HZe-fE-dAk" secondAttribute="top" constant="10" id="UBb-2v-2Gz"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="YKL-rD-JKQ"/>
+                                    <constraint firstItem="yhC-US-41g" firstAttribute="top" secondItem="gxq-C7-PsU" secondAttribute="bottom" constant="6" id="llV-tC-Yl8"/>
+                                    <constraint firstAttribute="trailing" secondItem="gxq-C7-PsU" secondAttribute="trailing" constant="8" id="yQB-ad-NIP"/>
+                                    <constraint firstAttribute="trailing" secondItem="yhC-US-41g" secondAttribute="trailing" constant="8" id="yg2-ih-IhX"/>
+                                    <constraint firstItem="yhC-US-41g" firstAttribute="leading" secondItem="HZe-fE-dAk" secondAttribute="leading" constant="8" id="z5G-mZ-aug"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osv-zU-ig8" customClass="Chart" customModule="SwiftChart">

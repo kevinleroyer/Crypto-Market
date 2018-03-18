@@ -101,7 +101,6 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! CurrencyDashboardViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCurrency = currencies[indexPath.row]
             destinationVC.currencyDataModel = currencyDataModels[indexPath.row]
         }
     }

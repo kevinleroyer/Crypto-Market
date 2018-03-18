@@ -23,9 +23,8 @@ class CurrencyDashboardViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     var nativeCurrency : [String: Any] = [:]
-    var currencyDataModel : CurrencyDataModel?
 
-    var selectedCurrency : [String : String]? {
+    var currencyDataModel : CurrencyDataModel? {
         didSet{
             nativeCurrency = defaults.dictionary(forKey: "nativeCurrency")!
             loadCurrencyChartData()
@@ -33,8 +32,6 @@ class CurrencyDashboardViewController: UIViewController {
     }
     
     let historyEndpoint = "https://apiv2.bitcoinaverage.com/indices/global/history/"
-    let tickerEndpoint = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
-
     var finalURL = ""
     
     override func viewDidLoad() {
@@ -42,20 +39,19 @@ class CurrencyDashboardViewController: UIViewController {
         SVProgressHUD.show()
         oneDayButton.isSelected = true
         chart.showXLabelsAndGrid = false
-        if currencyDataModel != nil {
-            setCurrencyData()
-        }
+        
+        setCurrencyData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        title = (selectedCurrency?["name"])! + " Price"
+        title = (currencyDataModel?.name)! + " Price"
     }
     
     //MARK: - Chart Data
     
     func loadCurrencyChartData(period: String = "daily") {
         
-        guard let currencyShortName = selectedCurrency?["shortName"]! else { fatalError() }
+        guard let currencyShortName = currencyDataModel?.shortName else { fatalError() }
 
         let defaultCurrency = nativeCurrency["shortName"] as! String
         finalURL = historyEndpoint + currencyShortName + defaultCurrency + "?period=" + period
@@ -66,6 +62,7 @@ class CurrencyDashboardViewController: UIViewController {
                     let currencyData : JSON = JSON(response.result.value!)
                     self.updateChart(json: currencyData)
                 }
+                SVProgressHUD.dismiss()
         }
     }
     
@@ -80,13 +77,12 @@ class CurrencyDashboardViewController: UIViewController {
         let series = ChartSeries(chartData)
         series.area = true
         chart.add(series)
-        SVProgressHUD.dismiss()
     }
     
     // MARK: - Currency Data
     
     func setCurrencyData() {
-        currencyChangeLabel.text = currencyDataModel!.changePrice + currencyDataModel!.symbol + " (" + currencyDataModel!.changePercent + ")"
+        currencyChangeLabel.text = currencyDataModel!.changePrice + currencyDataModel!.symbol + " (" + currencyDataModel!.changePercent + "%)"
         currencyPriceLabel.text = currencyDataModel!.symbol + currencyDataModel!.value
     }
     
